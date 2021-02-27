@@ -17,7 +17,7 @@
  */
 function addRandomGreeting() {
   const greetings =
-      ['Hello world!', '¡Hola Mundo!', '你好，世界！', 'Bonjour le monde!'];
+      ['A man does not cry beacuse he lacks strength. He cries because he has been strong for too long - Itachi Uchiha', 'If we do not fight we cannot win. - Eren Yeager', 'Shinzo wo sasageyo', 'He who wants to reach the top must start at the bottom. - Takeda sensei'];
 
   // Pick a random greeting.
   const greeting = greetings[Math.floor(Math.random() * greetings.length)];
