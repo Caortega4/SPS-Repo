@@ -10,13 +10,13 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/phrase")
 public class PhraseServlet extends HttpServlet {
 
-  private String phrase = "Hello World";
+  private String phrase = "He who wants to reach the top must begin at the bottom.";
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     
     response.setContentType("text/html;");
-    response.getWriter().println("<h1>Phrase</h1>");
-    response.getWriter().println("<p>" + phrase + "</p>");
+    //response.getWriter().println("<h1>Phrase</h1>");
+    response.getWriter().println( phrase );
   }
 }
