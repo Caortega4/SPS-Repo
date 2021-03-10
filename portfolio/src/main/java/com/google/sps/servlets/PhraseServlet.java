@@ -15,8 +15,33 @@ public class PhraseServlet extends HttpServlet {
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     
-    response.setContentType("text/html;");
+    
+    String[] phrases = {"One must never prioritize their own gain over humanities survival. Erwin Smith", 
+    "The future belongs to those who believe in the beauty of their dreams. Shoyo Hinata",
+     "You do not win alone. That is just how it is. Tobio Kageyama"};
+    //response.setContentType("text/html;");
     //response.getWriter().println("<h1>Phrase</h1>");
-    response.getWriter().println( phrase );
+    String json = convertToJson(phrases);
+
+    // Send the JSON as the response
+    response.setContentType("application/json;");
+    response.getWriter().println(json);
+    
   }
+
+    private String convertToJson(String[] phrases) {
+    String json = "{";
+    json += "\"phrase1\": ";
+    json += "\"" + phrases[0] + "\"";
+    json += ", ";
+    json += "\"phrase2\": ";
+    json += "\"" + phrases[1] + "\"";
+    json += ", ";
+    json += "\"phrase3\": ";
+    json += "\"" + phrases[2] + "\"";
+    json += "}";
+    return json;
+  }
+
+
 }
