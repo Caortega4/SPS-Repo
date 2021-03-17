@@ -1,10 +1,17 @@
 package com.google.sps.servlets;
 
+import com.google.cloud.datastore.Datastore;
+import com.google.cloud.datastore.DatastoreOptions;
+import com.google.cloud.datastore.Entity;
+import com.google.cloud.datastore.FullEntity;
+import com.google.cloud.datastore.KeyFactory;
 import java.io.IOException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.jsoup.Jsoup;
+import org.jsoup.safety.Whitelist;
 
 @WebServlet("/form-handler")
 public class FormHandlerServlet extends HttpServlet {
@@ -13,14 +20,20 @@ public class FormHandlerServlet extends HttpServlet {
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
     // Get the value entered in the form.
-    String nameValue = request.getParameter("name-input");
-    String messageValue = request.getParameter("message-input");
+    String name = Jsoup.clean(request.getParameter("name-input"), Whitelist.none());
+    String message = Jsoup.clean(request.getParameter("message-input"), Whitelist.none());
+    long timestamp = System.currentTimeMillis();
 
-    // Print the values so you can see it in the server logs.
-    System.out.println("Wants to contact Carlos Ortega: " + nameValue);
-    System.out.println("Message: " + messageValue);
+    Datastore datastore = DatastoreOptions.getDefaultInstance().getService();
+    KeyFactory keyFactory = datastore.newKeyFactory().setKind("Comment");
+    FullEntity commentEntity =
+        Entity.newBuilder(keyFactory.newKey())
+            .set("name", name)
+            .set("message", message)
+            .set("timestamp", timestamp)
+            .build();
+    datastore.put(commentEntity);
 
-    // Write the value to the response so the user can see it.
-    response.getWriter().println(nameValue + " says: " + messageValue);
+    response.sendRedirect("/index.html");
   }
 }

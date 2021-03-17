@@ -7,7 +7,7 @@
     <script src="script.js"></script>
     <script src="phrase_script.js"></script>
   </head>
-  <body>
+  <body onload="loadComments()">
     <div id="content">
       <button onclick="showPhrase();">
         Get phrase
@@ -49,14 +49,26 @@
       <img src = "/images/carlos-selfie.jpg">
       <img src = "/images/tree.jpg">      
 
+      <h1>Comment List</h1>
+
       <form action="/form-handler" method="POST">
         <p>Name:</p>
-        <textarea name="name-input"></textarea>
+        <input type="text" name="name-input" />
+        <br/>
+        <p>Message:</p>
+        <input type="text" name="message-input" />
+        <br/>
+        <button>Submit</button>
+        <!--<textarea name="name-input"></textarea>
         <p>Message</p>
         <textarea name="message-input"></textarea>
-        <br/>
-        <input type="submit" />
+        <br/> 
+        <input type="submit" /> -->
       </form>
+
+        <hr/>
+
+        <ul id="comment-list"></ul>
 
     </div>
   </body>
