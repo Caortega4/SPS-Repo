@@ -17,13 +17,12 @@ public class PhraseServlet extends HttpServlet {
     
     
     String[] phrases = {"One must never prioritize their own gain over humanities survival. Erwin Smith", 
-    "The future belongs to those who believe in the beauty of their dreams. Shoyo Hinata",
-     "You do not win alone. That is just how it is. Tobio Kageyama"};
-    //response.setContentType("text/html;");
-    //response.getWriter().println("<h1>Phrase</h1>");
+                        "The future belongs to those who believe in the beauty of their dreams. Shoyo Hinata",
+                        "You do not win alone. That is just how it is. Tobio Kageyama"};
+
     String json = convertToJson(phrases);
 
-    // Send the JSON as the response
+
     response.setContentType("application/json;");
     response.getWriter().println(json);
     
