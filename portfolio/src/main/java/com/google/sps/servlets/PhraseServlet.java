@@ -21,7 +21,6 @@ public class PhraseServlet extends HttpServlet {
                         "You do not win alone. That is just how it is. Tobio Kageyama"};
     String json = convertToJson(phrases);
 
-    // Send the JSON as the response
     response.setContentType("application/json;");
     response.getWriter().println(json);
     
