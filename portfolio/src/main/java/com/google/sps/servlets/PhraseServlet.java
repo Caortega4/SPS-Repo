@@ -28,15 +28,15 @@ public class PhraseServlet extends HttpServlet {
     
   }
 
-    private String convertToJson(String[] phrases) {
-    String json = "[";
-    json += "\"" + phrases[0] + "\"";
-    json += ", ";
-    json += "\"" + phrases[1] + "\"";
-    json += ", ";
-    json += "\"" + phrases[2] + "\"";
-    json += "]";
-    return json;
+  private String convertToJson(String[] phrases) {
+  String json = "[";
+  json += "\"" + phrases[0] + "\"";
+  json += ", ";
+  json += "\"" + phrases[1] + "\"";
+  json += ", ";
+  json += "\"" + phrases[2] + "\"";
+  json += "]";
+  return json;
   }
 
 
