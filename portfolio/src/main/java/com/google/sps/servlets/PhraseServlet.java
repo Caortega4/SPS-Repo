@@ -22,13 +22,13 @@ public class PhraseServlet extends HttpServlet {
 
     String json = convertToJson(phrases);
 
-
     response.setContentType("application/json;");
     response.getWriter().println(json);
     
   }
 
   private String convertToJson(String[] phrases) {
+
   String json = "[";
   json += "\"" + phrases[0] + "\"";
   json += ", ";
@@ -36,6 +36,7 @@ public class PhraseServlet extends HttpServlet {
   json += ", ";
   json += "\"" + phrases[2] + "\"";
   json += "]";
+
   return json;
   }
 
