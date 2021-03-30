@@ -4,6 +4,6 @@ async function showPhrase() {
   const phrases = await responseFromServer.json();
 
   const phraseContainer = document.getElementById('phrase-container');
-  phraseContainer.innerText = phrases.phrase1;
-  //phraseContainer.innerText = phrases.phrase1;
+  const randomText = phrases[Math.floor(Math.random() * phrases.length)];
+  phraseContainer.innerText = randomText;
 }

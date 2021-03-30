@@ -19,6 +19,7 @@ public class PhraseServlet extends HttpServlet {
     String[] phrases = {"One must never prioritize their own gain over humanities survival. Erwin Smith", 
                         "The future belongs to those who believe in the beauty of their dreams. Shoyo Hinata",
                         "You do not win alone. That is just how it is. Tobio Kageyama"};
+
     String json = convertToJson(phrases);
 
     response.setContentType("application/json;");
@@ -27,16 +28,15 @@ public class PhraseServlet extends HttpServlet {
   }
 
   private String convertToJson(String[] phrases) {
-  String json = "{";
-  json += "\"phrase1\": ";
+
+  String json = "[";
   json += "\"" + phrases[0] + "\"";
   json += ", ";
-  json += "\"phrase2\": ";
   json += "\"" + phrases[1] + "\"";
   json += ", ";
-  json += "\"phrase3\": ";
   json += "\"" + phrases[2] + "\"";
-  json += "}";
+  json += "]";
+
   return json;
   }
 
